@@ -11,7 +11,6 @@ public class ProductoBean {
     private int id_tipoproducto;
 
     public ProductoBean() {
-
     }
 
     public ProductoBean(int id) {
