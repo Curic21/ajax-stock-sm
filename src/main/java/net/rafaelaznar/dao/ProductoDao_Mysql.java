@@ -1,17 +1,17 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package net.rafaelaznar.dao;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import net.rafaelaznar.bean.ProductoBean;
 import net.rafaelaznar.data.MysqlData;
 import net.rafaelaznar.helper.Conexion;
 import net.rafaelaznar.helper.FilterBean;
+import net.rafaelaznar.bean.ProductoBean;
 
-/**
- *
- * @author AntonioNP
- */
 public class ProductoDao_Mysql implements ProductoDao {
 
     private final MysqlData oMysql;
@@ -77,8 +77,8 @@ public class ProductoDao_Mysql implements ProductoDao {
                 } else {
                     oProductoBean.setCodigo(oMysql.getOne("producto", "codigo", oProductoBean.getId()));
                     oProductoBean.setDescripcion(oMysql.getOne("producto", "descripcion", oProductoBean.getId()));
-                    oProductoBean.setPrecio(oMysql.getOne("producto", "precio", oProductoBean.getId()));
-                    oProductoBean.setId_tipoproducto(Integer.parseInt(oMysql.getOne("producto", "id_tipoproducto", oProductoBean.getId())));
+                    oProductoBean.setPrecio(Double.parseDouble(oMysql.getOne("producto", "precio", oProductoBean.getId())));
+                    oProductoBean.setTipoProducto(Integer.parseInt(oMysql.getOne("producto", "id_tipoproducto", oProductoBean.getId())));
                 }
             } catch (Exception e) {
                 throw new Exception("ProductoDao.getProducto: Error: " + e.getMessage());
@@ -101,8 +101,13 @@ public class ProductoDao_Mysql implements ProductoDao {
             }
             oMysql.updateOne(oProductoBean.getId(), "producto", "codigo", oProductoBean.getCodigo());
             oMysql.updateOne(oProductoBean.getId(), "producto", "descripcion", oProductoBean.getDescripcion());
-            oMysql.updateOne(oProductoBean.getId(), "producto", "precio", oProductoBean.getPrecio());
-            oMysql.updateOne(oProductoBean.getId(), "producto", "id_tipoproducto", Integer.toString(oProductoBean.getId_tipoproducto()));
+            oMysql.updateOne(oProductoBean.getId(), "producto", "precio", oProductoBean.getPrecio().toString());
+             Integer id_Tipoproducto = oProductoBean.getTipoProducto();
+            if (id_Tipoproducto > 0) {
+                oMysql.updateOne(oProductoBean.getId(), "producto", "id_tipoproducto", id_Tipoproducto.toString());
+            } else {
+                oMysql.setNull(oProductoBean.getId(), "producto", "id_tipoproducto");
+            }
             oMysql.commitTrans();
         } catch (Exception e) {
             oMysql.rollbackTrans();
@@ -128,12 +133,12 @@ public class ProductoDao_Mysql implements ProductoDao {
 
     @Override
     public ArrayList<String> getColumnsNames() throws Exception {
-        ArrayList<String> alColumns = null;
+        ArrayList<String> alColumns=null;
         try {
             oMysql.conexion(enumTipoConexion);
-            alColumns = oMysql.getColumnsName("producto", Conexion.getDatabaseName());
+            alColumns=oMysql.getColumnsName("producto", Conexion.getDatabaseName());
             oMysql.desconexion();
-
+            
         } catch (Exception e) {
             throw new Exception("ProductoDao.removeProducto: Error: " + e.getMessage());
         } finally {

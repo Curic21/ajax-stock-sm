@@ -3,8 +3,8 @@
  * and open the template in the editor.
  */
 package net.rafaelaznar.dao;
-
 import net.rafaelaznar.bean.ClienteBean;
+
 
 /**
  *

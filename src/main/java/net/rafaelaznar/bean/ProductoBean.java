@@ -1,27 +1,27 @@
 package net.rafaelaznar.bean;
 
-/**
- *
- * @author AntonioNP
- */
 public class ProductoBean {
 
-    private int id;
-    private String codigo, descripcion, precio;
-    private int id_tipoproducto;
+    private Integer id = 0;
+    private String codigo = "";
+    private String descripcion = "";
+    private Double precio = 0.0;
+    private Integer tipoProducto = 0;
 
     public ProductoBean() {
+
     }
 
-    public ProductoBean(int id) {
+    public ProductoBean(Integer id) {
         this.id = id;
+
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -41,20 +41,20 @@ public class ProductoBean {
         this.descripcion = descripcion;
     }
 
-    public String getPrecio() {
+    public Double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(String precio) {
+    public void setPrecio(Double precio) {
         this.precio = precio;
     }
 
-    public int getId_tipoproducto() {
-        return id_tipoproducto;
+    public Integer getTipoProducto() {
+        return tipoProducto;
     }
 
-    public void setId_tipoproducto(int id_tipoproducto) {
-        this.id_tipoproducto = id_tipoproducto;
+    public void setTipoProducto(Integer tipoProducto) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
