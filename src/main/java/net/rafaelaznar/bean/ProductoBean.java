@@ -6,7 +6,15 @@ public class ProductoBean {
     private String codigo = "";
     private String descripcion = "";
     private Double precio = 0.0;
-    private Integer tipoProducto = 0;
+
+    public Integer getId_tipoproducto() {
+        return id_tipoproducto;
+    }
+
+    public void setId_tipoproducto(Integer id_tipoproducto) {
+        this.id_tipoproducto = id_tipoproducto;
+    }
+    private Integer id_tipoproducto = 0;
 
     public ProductoBean() {
 
@@ -49,12 +57,6 @@ public class ProductoBean {
         this.precio = precio;
     }
 
-    public Integer getTipoProducto() {
-        return tipoProducto;
-    }
 
-    public void setTipoProducto(Integer tipoProducto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
 }

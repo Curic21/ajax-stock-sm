@@ -1,7 +1,7 @@
 <%-- 
     Document   : form
     Created on : 07-ene-2014, 19:37:31
-    Author     : AntonioNP
+    Author     : Jordi
 --%>
 <form id="formulario" class="form-horizontal" name="formulario" action="json">
     <h2>Producto</h2>

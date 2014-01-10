@@ -1,7 +1,7 @@
 <%-- 
     Document   : list
     Created on : 07-ene-2014, 20:44:45
-    Author     : AntonioNP
+    Author     : Jordi
 --%>
 <%@page import="net.rafaelaznar.helper.Conexion"%>
 <%@page import="net.rafaelaznar.dao.ProductoDao_Mysql"%>

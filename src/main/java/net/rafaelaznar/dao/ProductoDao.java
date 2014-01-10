@@ -5,7 +5,7 @@ import sun.net.www.content.text.Generic;
 
 /**
  *
- * @author AntonioNP
+ * @author Jordi
  */
 public interface ProductoDao extends GenericDao<ProductoBean>{
     

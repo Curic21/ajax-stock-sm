@@ -78,7 +78,7 @@ public class ProductoDao_Mysql implements ProductoDao {
                     oProductoBean.setCodigo(oMysql.getOne("producto", "codigo", oProductoBean.getId()));
                     oProductoBean.setDescripcion(oMysql.getOne("producto", "descripcion", oProductoBean.getId()));
                     oProductoBean.setPrecio(Double.parseDouble(oMysql.getOne("producto", "precio", oProductoBean.getId())));
-                    oProductoBean.setTipoProducto(Integer.parseInt(oMysql.getOne("producto", "id_tipoproducto", oProductoBean.getId())));
+                    oProductoBean.setId_tipoproducto(Integer.parseInt(oMysql.getOne("producto", "id_tipoproducto", oProductoBean.getId())));
                 }
             } catch (Exception e) {
                 throw new Exception("ProductoDao.getProducto: Error: " + e.getMessage());
@@ -102,7 +102,7 @@ public class ProductoDao_Mysql implements ProductoDao {
             oMysql.updateOne(oProductoBean.getId(), "producto", "codigo", oProductoBean.getCodigo());
             oMysql.updateOne(oProductoBean.getId(), "producto", "descripcion", oProductoBean.getDescripcion());
             oMysql.updateOne(oProductoBean.getId(), "producto", "precio", oProductoBean.getPrecio().toString());
-             Integer id_Tipoproducto = oProductoBean.getTipoProducto();
+             Integer id_Tipoproducto = oProductoBean.getId_tipoproducto();
             if (id_Tipoproducto > 0) {
                 oMysql.updateOne(oProductoBean.getId(), "producto", "id_tipoproducto", id_Tipoproducto.toString());
             } else {
